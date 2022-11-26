@@ -13,9 +13,10 @@
 <section id="welcome">
     <div class="title-welcome">
         <h1><b>Check What Your Country need based on data you got</b></h1>
-        <h2>SaveTheEarth.org</h2> 
-        <p>A web Application based on K-means Clustering Model <br> to predict what type of country you're live in and <br> to see what kind of things you can do to make it into a better place</p>
-        <button type="submit" class="btn btn-success">Check it out now !</button>
+        <h2>SaveTheEarth.org</h2>
+        <p>A web Application based on K-means Clustering Model <br> to predict what type of country you're live in and
+            <br> to see what kind of things you can do to make it into a better place</p>
+        <a href="#form"><button type="submit" class="btn btn-success">Check it out now !</button></a>
     </div>
 
 </section>
@@ -23,69 +24,79 @@
 
 <!-- komponen form -->
 {% block form %}
-<br><br>
-<section class="container">
+
+<section id="form" class="container">
+    <br><br>
     <h1>Masukkan Data</h1><br><br>
-    <form>
+    <form action='/predict#result' method='POST'>
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-group">
+                    <label for="exampleInputEmail1">Country Name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter Child Mortality" name="country">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <div class="form-group">
                     <label for="exampleInputEmail1">Child Mortality</label>
-                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Enter Child Mortality">
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter Child Mortality" name="child_mort">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                         else.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Exports</label>
-                    <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Enter Exports">
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Exports"
+                        name="exports">
                 </div>
 
                 <div class="form-group">
                     <label for="exampleInputEmail1">Healt</label>
-                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Enter Healt">
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter Healt" name="healt">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                         else.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Imports</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Imports">
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Income</label>
-                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Enter Income">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                        else.</small>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Imports"
+                        name="import">
                 </div>
             </div>
             <div class="col-lg-6">
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Income</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter Income" name="income">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Inflation</label>
-                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Enter Inflation">
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter Inflation" name="inflation">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                         else.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Life Expectancy</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1"
-                        placeholder="Enter Life Expectancy">
+                    <input type="text" class="form-control" id="exampleInputPassword1"
+                        placeholder="Enter Life Expectancy" name="life_expec">
                 </div>
 
                 <div class="form-group">
                     <label for="exampleInputEmail1">Total Fertility</label>
-                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Enter Total Fertility">
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter Total Fertility" name="total_fer">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
                         else.</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">GDP per Capita</label>
-                    <input type="number" class="form-control" id="exampleInputPassword1"
-                        placeholder="Enter GDP per Capita">
+                    <input type="text" class="form-control" id="exampleInputPassword1"
+                        placeholder="Enter GDP per Capita" name="gdpp">
                 </div>
             </div>
         </div>
@@ -93,8 +104,18 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </section>
-<br><br>
-<section class="container">
-    <h1>Hasil Prediksi</h1><br><br>
+
+<section id="result" class="container">
+    <br><br><br>
+    <h1>Hasil Prediksi</h1>
+    <br><br>
+    <div>
+        <ul>
+            <li>Country Name : {{ result_value["country"] }}</li>
+            <li>Hasil Prediksi : {{ result_value["cluster"] }}</li>
+        </ul>
+    </div>
+
+    <br><br>
 </section>
 {% endblock %}
