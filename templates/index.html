@@ -1,9 +1,100 @@
 {% extends 'base.html' %}
 
 {% block head %}
+<title>Home Page</title>
 {% endblock %}
 
+<!-- komponen navbar -->
+{% block navbar %}
+{% include 'navbar.html' %}
+{% endblock %}
 
-{% block body %}
-<h1>Template</h1>
+{% block welcome %}
+<section id="welcome">
+    <div class="title-welcome">
+        <h1><b>Check What Your Country need based on data you got</b></h1>
+        <h2>SaveTheEarth.org</h2> 
+        <p>A web Application based on K-means Clustering Model <br> to predict what type of country you're live in and <br> to see what kind of things you can do to make it into a better place</p>
+        <button type="submit" class="btn btn-success">Check it out now !</button>
+    </div>
+
+</section>
+{% endblock %}
+
+<!-- komponen form -->
+{% block form %}
+<br><br>
+<section class="container">
+    <h1>Masukkan Data</h1><br><br>
+    <form>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Child Mortality</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter Child Mortality">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Exports</label>
+                    <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Enter Exports">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Healt</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter Healt">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Imports</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Imports">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Income</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter Income">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Inflation</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter Inflation">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Life Expectancy</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1"
+                        placeholder="Enter Life Expectancy">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Total Fertility</label>
+                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter Total Fertility">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                        else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">GDP per Capita</label>
+                    <input type="number" class="form-control" id="exampleInputPassword1"
+                        placeholder="Enter GDP per Capita">
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</section>
+<br><br>
+<section class="container">
+    <h1>Hasil Prediksi</h1><br><br>
+</section>
 {% endblock %}
