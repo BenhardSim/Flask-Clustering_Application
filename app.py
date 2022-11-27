@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, jsonify
 from scipy.spatial import distance
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import normalize
@@ -29,6 +29,19 @@ def index():
 @app.route('/', methods=['POST'])
 def get_input_values():
     val = request.form['child_mort']
+
+
+# @app.route('/test', methods=['POST'])
+# def validasi():
+#     errors = {}
+#     if request.method == "POST":
+#         uCountry = request.form["country"]
+#         errors["uCountry"] = ["test"]
+#         if not uCountry[0].isalpha():
+#             errors["uCountry"] = ["Harus alphabet"]
+#     return render_template("index.html", errors=errors)
+    # country_name = request.get_json()['country']
+    # country =
 
 
 @app.route('/predict', methods=['POST'])
