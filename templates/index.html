@@ -111,10 +111,76 @@
     <br><br>
     <div>
         <ul>
+            {% if result_value["country"] and  result_value["cluster"]%}
             <li>Country Name : {{ result_value["country"] }}</li>
             <li>Hasil Prediksi : {{ result_value["cluster"] }}</li>
+            {% endif %}
         </ul>
     </div>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Field</th>
+            <th scope="col">Value</th>
+            <th scope="col">Prediction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Contry Name</td>
+            <td>{{ result_value["country"] }}</td>
+            <td rowspan="10" style="vertical-align : middle;text-align:center;">{{ result_value["cluster"] }}</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Child Mortality</td>
+            <td>{{ result_value["child_mort"] }}</td>
+            <!-- <td  >@fat</td> -->
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Exports</td>
+            <td>{{ result_value["exports"] }}</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>Healt</td>
+            <td>{{ result_value["healt"] }}</td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td>Imports</td>
+            <td>{{ result_value["import"] }}</td>
+          </tr>
+          <tr>
+            <th scope="row">6</th>
+            <td>Income</td>
+            <td>{{ result_value["income"] }}</td>
+          </tr>
+          <tr>
+            <th scope="row">7</th>
+            <td>Inflation</td>
+            <td>{{ result_value["inflation"] }}</td>
+          </tr>
+          <tr>
+            <th scope="row">8</th>
+            <td>Life Expectancy</td>
+            <td>{{ result_value["life_expec"] }}</td>
+          </tr>
+          <tr>
+            <th scope="row">9</th>
+            <td>Total Fertility</td>
+            <td>{{ result_value["total_fer"] }}</td>
+          </tr>
+          <tr>
+            <th scope="row">10</th>
+            <td>GDP per Capita</td>
+            <td>{{ result_value["gdpp"] }}</td>
+          </tr>
+        </tbody>
+      </table>
 
     <br><br>
 </section>

@@ -12,7 +12,18 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("index.html", result_value={
+        "cluster": "-",
+        "country": "-",
+        "child_mort": "-",
+        "exports": "-",
+        "healt": "-",
+        "import": "-",
+        "income": "-",
+        "inflation": "-",
+        "life_expec": "-",
+        "total_fer": "-",
+        "gdpp": "-"})
 
 
 @app.route('/', methods=['POST'])
@@ -35,10 +46,10 @@ def predict():
             # collecting values
             vals = []
             for key, value in input_val.items():
-                if key != 'country' :
+                if key != 'country':
                     vals.append(float(value))
             mm_scaler = MinMaxScaler()
-            # normalisasi data 
+            # normalisasi data
             # menggunakan file hasil eksport
             scaler = pickle.load(open('scaler-new.pkl', 'rb'))
             x = scaler.transform([vals])
@@ -66,7 +77,7 @@ def predict():
             dist = distance.euclidean(scaled_data[0], this_segment[:3])
             l.append(dist)
 
-        # mencari nilai terdekat dengan cluster 
+        # mencari nilai terdekat dengan cluster
         res = 9999999999999
         cluster = -1
         for i, dis in enumerate(l):
@@ -83,10 +94,21 @@ def predict():
         else:
             hasil = "This Country Realy Need Some Help"
 
-
         return render_template(
-            'index.html', result_value={"cluster" : hasil, "country" : request.form['country']}
-            )
+            'index.html',
+            result_value={
+                "cluster": hasil,
+                "country": request.form['country'],
+                "child_mort": request.form['child_mort'],
+                "exports": request.form['exports'],
+                "healt": request.form['healt'],
+                "import": request.form['import'],
+                "income": request.form['income'],
+                "inflation": request.form['inflation'],
+                "life_expec": request.form['life_expec'],
+                "total_fer": request.form['total_fer'],
+                "gdpp": request.form['gdpp']}
+        )
 
 
 if __name__ == "__main__":
