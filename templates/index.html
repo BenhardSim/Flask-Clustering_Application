@@ -97,7 +97,7 @@
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <br><br>
+    <br><br><br><br>
 </section>
 
 <section id="result">
@@ -109,7 +109,7 @@
             <ul>
                 {% if result_value["country"] and  result_value["cluster"]%}
                 <li>Country Name : {{ result_value["country"] }}</li>
-                <li>Hasil Prediksi : {{ result_value["cluster"] }}</li>
+                <li>Hasil Prediksi : <b>{{ result_value["cluster"] }}</b></li>
                 {% endif %}
             </ul>
         </div>
@@ -127,7 +127,7 @@
                     <th scope="row">1</th>
                     <td>Contry Name</td>
                     <td>{{ result_value["country"] }}</td>
-                    <td rowspan="10" style="vertical-align : middle;text-align:center;">{{ result_value["cluster"] }}
+                    <td rowspan="10" style="vertical-align : middle;text-align:center; background-color: {{ result_value['color'] }}; color: white;"><h3><b>{{ result_value["cluster"] }}</b></h3>
                     </td>
                 </tr>
                 <tr>
@@ -220,7 +220,7 @@
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
             © 2022 Copyright:
-            <a class="text-white" href="https://mdbootstrap.com/">Kelompok Machine Learning</a>
+            <a class="text-white" href="#welcome">Kelompok Machine Learning</a>
         </div>
         <!-- Copyright -->
     </footer>

@@ -13,7 +13,8 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     return render_template("index.html", result_value={
-        "cluster": "-",
+        "color":"#497174",
+        "cluster": "input data untuk melihat prediksi",
         "country": "-",
         "child_mort": "-",
         "exports": "-",
@@ -86,17 +87,22 @@ def predict():
                 res = dis
                 cluster = i
         hasil = ''
+        color = ''
         # return {"cluster": str(cluster), "hasil reduksi": scaled_data, "titik pusat cluster": freezed_centroids.tolist(), "jarak tiap cluster" : l}
         if cluster == 0:
             hasil = "This Country Might Need Some Help"
+            color = "#FFE15D"
         elif cluster == 1:
             hasil = "This Country Doesn't need Help"
+            color = "#68B984"
         else:
             hasil = "This Country Realy Need Some Help"
+            color = "#DC3535"
 
         return render_template(
             'index.html',
             result_value={
+                "color":color,
                 "cluster": hasil,
                 "country": request.form['country'],
                 "child_mort": request.form['child_mort'],
